@@ -41,6 +41,7 @@ fi
 if [[ $result -eq 0 ]]
 then
 pkill -f dina-term &&
+cp /usr/bin/templates/index-backup.html /usr/bin/templates/index.html &
 echo "	DinaTerm stopped, bye!"
 exit
 else
@@ -69,16 +70,14 @@ then
 	echo "	DinaTerm is already running.."
 	$BROWSER http://127.0.0.1:5001 &
 	sleep 3 &&
-	xdotool mousemove 300 300 click 1 sleep 0.2 mousemove restore key Return &
-        cp /usr/bin/templates/index-backup.html /usr/bin/templates/index.html &
+	xdotool mousemove 300 300 click 1 sleep 0.2 mousemove restore key Return
 else
 	echo "	launching DinaTerm.."
 	$DINATERM &
     sleep 0.5 &&
     $BROWSER http://127.0.0.1:5001 &
     sleep 3 &&
-    xdotool mousemove 300 300 click 1 sleep 0.2 mousemove restore &
-    cp /usr/bin/templates/index-backup.html /usr/bin/templates/index.html &
+    xdotool mousemove 300 300 click 1 sleep 0.2 mousemove restore
 fi
 
 exit
