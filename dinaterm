@@ -71,6 +71,7 @@ then
 	$BROWSER http://127.0.0.1:5001 &
 	sleep 3 &&
 	xdotool mousemove 300 300 click 1 sleep 0.2 mousemove restore key Return
+        cp /usr/bin/templates/index-backup.html /usr/bin/templates/index.html &
 else
 	echo "	launching DinaTerm.."
 	$DINATERM &
@@ -78,6 +79,7 @@ else
     $BROWSER http://127.0.0.1:5001 &
     sleep 3 &&
     xdotool mousemove 300 300 click 1 sleep 0.2 mousemove restore
+    cp /usr/bin/templates/index-backup.html /usr/bin/templates/index.html &
 fi
 
 exit
