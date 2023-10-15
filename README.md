@@ -23,4 +23,10 @@ pyinstaller --add-data "index.html:." --clean --onefile dina-term.py --name dina
 
 A ready-made executable of DinaTerm is provided in the Releases. The .deb package in the Releases downloads the executable during installation
 
+DinaTerm Debian packages are also available on packagecloud:
+
+curl -s https://packagecloud.io/install/repositories/ion/telos/script.deb.sh | sudo bash
+
+sudo apt-get install dinaterm
+
 DinaTerm and Dina run on Linux._
