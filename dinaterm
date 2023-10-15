@@ -1,0 +1,73 @@
+#! /bin/bash
+## /usr/bin/dinaterm
+
+## Copyright: 2023, Ion@TeLOS
+## License: GPL-3.0+
+
+# This is a launch script for a slightly modified pyxterm.js , a fully functional terminal in the browser.
+# The app is running in localhost, port 5001. 
+# Call the script to start the app. Use the argument --stop to kill it. It is not advised to stop the script while running commands in the terminal. A warning is shown with the help of yad dialog (https://github.com/v1cont/yad) to prevent coincidental undesired actions. Install yad to use this feature. 
+# DinaTerm is an extension for Dina Browser (https://github.com/iontelos/Dina).
+# The installation of Dina is suggested but not required to use DinaTerm.
+# Dina is a minimal browser built with tauri and Pake and uses the Webkit rendering engine. 
+# After entering your search terms, the script hands over control to dina.sh script which handles launching Dina browser at the web address of your choice. 
+# Pake and pyxterm.js are credited external projects with their own licenses. Learn more about pyxterm.js at (https://github.com/cs01/pyxtermjs). Learn more about Pake at https://github.com/tw93/Pake. 
+# DinaTerm and Dina Browser are maintained by Ion@TeLOS (teloslinux@protonmail.com). 
+
+ARGUMENT=$1
+process=dina-term
+YAD=/usr/bin/yad
+DINA=/usr/bin/dina
+
+if [[ $ARGUMENT = stop ]] || [[ $ARGUMENT = --stop ]]
+then
+if test -f "$YAD"; then
+echo "yad is installed, continuing.."
+else
+echo "yad is not installed, exiting.."
+notify-send -a DinaTerm -i terminal "Install yad to use this feature" &
+exit
+fi
+if ! pgrep -f "$process"
+then   
+echo "DinaTerm is not running, nothing to do..";
+exit  
+else   
+yad --window-icon=dina-browser --center --on-top --title="Stop DinaTerm" --image=terminal --borders=10 --timeout=15 --timeout-indicator="bottom" --text="\n\t<b>Are you sure you want to quit DinaTerm? \n\nClick Cancel if you are now running commands in DinaTerm</b>" --width 400;result=$?;echo $result &
+fi
+if [[ $result -eq 0 ]]
+then
+pkill -f dina-term &&
+echo "	DinaTerm stopped, bye!"
+exit
+else
+echo "	You canceled quitting"
+exit
+fi
+fi
+
+if test -f "$DINA"; then
+echo "	Dina Browser is installed and will be used to launch the terminal.." &
+BROWSER=/usr/bin/dina-browser-direct
+else
+echo "	Dina Browser https://github.com/iontelos/Dina is not installed, the default browser will be used.." &
+BROWSER=xdg-open
+exit
+fi
+
+if (ps aux | grep dina-term | grep -v grep > /dev/null)
+then
+	echo "	DinaTerm is already running.."
+	$BROWSER http://127.0.0.1:5001 &
+	sleep 3 &&
+	xdotool mousemove 300 300 click 1 sleep 0.2 mousemove restore key Return
+else
+	echo "	launching DinaTerm.."
+	/usr/bin/dina-term &
+    sleep 0.5 &&
+    $BROWSER http://127.0.0.1:5001 &
+    sleep 3 &&
+    xdotool mousemove 300 300 click 1 sleep 0.2 mousemove restore
+fi
+
+exit
