@@ -21,6 +21,6 @@ Create an executable of DinaTerm: first create a Python virtual environment, ins
 
 pyinstaller --add-data "index.html:." --clean --onefile dina-term.py --name dina-term
 
-A ready-made executable of DinaTerm is provided in the Releases
+A ready-made executable of DinaTerm is provided in the Releases. The .deb package in the Releases downloads the executable during installation
 
 DinaTerm and Dina run on Linux._
