@@ -1,5 +1,5 @@
 # dinaterm
-A fully functional terminal app to run on Dina or any other browser
+A fully functional terminal app to run on Dina or any other browser.
 
 DinaTerm is a slightly modified of pyxterm.js https://github.com/cs01/pyxtermjs.
 
@@ -20,3 +20,5 @@ To run DinaTerm, create a Python virtual environment, install the requirements a
 Create an executable of DinaTerm: first create a Python virtual environment, install the requirements and run: 
 
 pyinstaller --add-data "index.html:." --clean --onefile dina-term.py --name dina-term
+
+DinaTerm and Dina run on Linux._
