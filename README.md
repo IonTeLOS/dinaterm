@@ -13,6 +13,10 @@ Dina is a minimal browser built with tauri and Pake and uses the WebKit renderin
 
 The installation of Dina is suggested but not required to use DinaTerm.
 
+Launch dinaterm with the --browser foo argument to use your foo browser to show DinaTerm
+
+You can launch DinaTerm in fullscreen using the --fullscreen argument. This option is available only in Dina Browser.
+
 Pake and pyxterm.js are credited external projects with their own licenses. Learn more about Pake at https://github.com/tw93/Pake. 
 
 To run DinaTerm, create a Python virtual environment, install the requirements and run dinaterm shell script from inside the virtual environment and from the same folder.
@@ -21,6 +25,6 @@ Create an executable of DinaTerm: first create a Python virtual environment, ins
 
 pyinstaller --add-data "index.html:." --clean --onefile dina-term.py --name dina-term
 
-A ready-made executable of DinaTerm is provided in the Releases. The .deb package in the Releases downloads the executable during installation
+A ready-made executable of DinaTerm is provided in the Releases. The .deb package in the Releases downloads the executable during installation.
 
 DinaTerm and Dina run on Linux._
