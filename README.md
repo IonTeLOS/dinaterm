@@ -29,4 +29,16 @@ A ready-made executable of DinaTerm is provided in the Releases. The .deb packag
 
 The icons used are Google material icons, the fonts are JetBrains Mono.
 
+To add the repository and install DinaTerm :
+
+wget -qO - https://iontelos.github.io/appy/KEY.gpg | sudo gpg --dearmor -o /usr/share/keyrings/appy.gpg
+
+sudo curl -s --compressed -o /etc/apt/sources.list.d/telos.list "https://iontelos.github.io/appy/telos.list"
+
+sudo apt clean
+
+sudo apt update
+
+sudo apt install dinaterm
+
 DinaTerm and Dina run on Linux._
